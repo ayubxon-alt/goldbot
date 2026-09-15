@@ -19,6 +19,10 @@
     --serif: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
+  @font-face{
+    font-family:"Cormorant Garamond";
+    src: local("Cormorant Garamond");
+  }
   *{box-sizing:border-box; -webkit-tap-highlight-color: transparent;}
   html,body{margin:0; padding:0; background:var(--bg); color:var(--cream); font-family:var(--sans); min-height:100%;}
   body{
@@ -28,33 +32,88 @@
     padding-bottom: 40px;
   }
   .wrap{max-width:520px; margin:0 auto; padding: 22px 18px 8px;}
-  .eyebrow{display:flex; align-items:center; justify-content:space-between; margin-bottom: 18px;}
-  .eyebrow .brand{font-size: 13px; letter-spacing: .04em; color: var(--muted);}
-  .status-dot{width:7px; height:7px; border-radius:50%; background: var(--gold-2); display:inline-block; margin-right:6px; box-shadow: 0 0 6px var(--gold-2);}
-  .hero{text-align:left; padding: 6px 2px 22px; border-bottom: 1px solid var(--line); margin-bottom: 22px;}
+
+  .eyebrow{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom: 18px;
+  }
+  .eyebrow .brand{
+    font-size: 13px; letter-spacing: .04em; color: var(--muted);
+  }
+  .status-dot{
+    width:7px; height:7px; border-radius:50%; background: var(--gold-2);
+    display:inline-block; margin-right:6px; box-shadow: 0 0 6px var(--gold-2);
+  }
+
+  .hero{
+    text-align:left;
+    padding: 6px 2px 22px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 22px;
+  }
   .hero-label{ font-size:14px; color: var(--muted); margin-bottom: 6px;}
-  .hero-price{font-family: var(--serif); font-weight: 600; font-size: 52px; line-height: 1; color: var(--gold-1); letter-spacing: 0.2px;}
+  .hero-price{
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--gold-1);
+    letter-spacing: 0.2px;
+  }
   .hero-price sup{ font-size: 20px; font-weight:500; color: var(--muted); top:-1.3em;}
   .hero-sub{ margin-top:10px; font-size: 13px; color: var(--muted); }
   .hero-sub b{ color: var(--cream); font-weight:600; }
+
   .list{ display:flex; flex-direction:column; gap:10px; }
-  .row{display:flex; align-items:center; justify-content:space-between; background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px 16px;}
-  .row.featured{border-color: rgba(201,162,39,0.55); background: linear-gradient(180deg, rgba(201,162,39,0.10), rgba(201,162,39,0.02));}
-  .proba{display:flex; align-items:baseline; gap:10px;}
-  .proba-num{font-family: var(--serif); font-size: 26px; font-weight:600; color: var(--cream);}
+  .row{
+    display:flex; align-items:center; justify-content:space-between;
+    background: var(--card);
+    border:1px solid var(--line);
+    border-radius: 14px;
+    padding: 14px 16px;
+  }
+  .row.featured{
+    border-color: rgba(201,162,39,0.55);
+    background: linear-gradient(180deg, rgba(201,162,39,0.10), rgba(201,162,39,0.02));
+  }
+  .proba{
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .proba-num{
+    font-family: var(--serif);
+    font-size: 26px; font-weight:600; color: var(--cream);
+  }
   .proba-note{ font-size: 12px; color: var(--muted); }
   .price{ text-align:right; }
   .price-val{ font-size: 17px; font-weight:600; color: var(--gold-1); }
   .price-unit{ font-size: 11px; color: var(--muted); margin-top:1px;}
-  .foot{display:flex; align-items:center; justify-content:space-between; margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 12px; color: var(--muted);}
-  .refresh-btn{appearance:none; border:1px solid var(--line); background: var(--bg-2); color: var(--gold-1); font-size:12px; padding: 8px 14px; border-radius: 999px; display:flex; align-items:center; gap:6px;}
+
+  .foot{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--line);
+    font-size: 12px; color: var(--muted);
+  }
+  .refresh-btn{
+    appearance:none; border:1px solid var(--line); background: var(--bg-2);
+    color: var(--gold-1); font-size:12px; padding: 8px 14px; border-radius: 999px;
+    display:flex; align-items:center; gap:6px;
+  }
   .refresh-btn:active{ transform: scale(0.97); }
   .refresh-btn svg{ width:12px; height:12px; }
+
   .state{ text-align:center; color: var(--muted); font-size: 14px; padding: 60px 10px;}
   .err{ color:#e0a06a; }
-  .retry{margin-top:14px; display:inline-block; border:1px solid var(--line); padding:8px 16px; border-radius:999px; color:var(--gold-1); font-size:13px;}
+  .retry{
+    margin-top:14px; display:inline-block; border:1px solid var(--line);
+    padding:8px 16px; border-radius:999px; color:var(--gold-1); font-size:13px;
+  }
+
   .skeleton{ position:relative; overflow:hidden; background:var(--card); }
-  .skeleton::after{content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); animation: shine 1.4s infinite;}
+  .skeleton::after{
+    content:""; position:absolute; inset:0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+    animation: shine 1.4s infinite;
+  }
   @keyframes shine{ 0%{transform:translateX(-100%);} 100%{transform:translateX(100%);} }
 </style>
 </head>
@@ -64,12 +123,15 @@
       <span class="brand">Oltin narxlari</span>
       <span id="liveTag" style="font-size:12px; color:var(--muted);"><span class="status-dot"></span>jonli kurs</span>
     </div>
+
     <div class="hero">
       <div class="hero-label">1 gramm sof oltin (999)</div>
       <div class="hero-price" id="heroPrice">—</div>
       <div class="hero-sub" id="heroSub">Yuklanmoqda…</div>
     </div>
+
     <div id="content" class="list"></div>
+
     <div class="foot">
       <span id="updatedAt">—</span>
       <button class="refresh-btn" id="refreshBtn">
@@ -78,66 +140,99 @@
       </button>
     </div>
   </div>
+
 <script>
   const tg = window.Telegram && window.Telegram.WebApp;
   if (tg) { tg.ready(); tg.expand(); }
+
   const PROBES = [
     { p: 375, note: "9 karat" },
     { p: 500, note: "12 karat" },
     { p: 585, note: "14 karat" },
     { p: 750, note: "18 karat" },
-    { p: 875, note: "21 karat" },
     { p: 916, note: "22 karat" },
     { p: 999, note: "sof oltin" },
   ];
-  const OZ_TO_GRAM = 31.1034768;
+  const DATA_URL = "https://raw.githubusercontent.com/ayubxon-alt/goldbot/main/webapp/data.json";
+
   const contentEl = document.getElementById("content");
   const heroPriceEl = document.getElementById("heroPrice");
   const heroSubEl = document.getElementById("heroSub");
   const updatedAtEl = document.getElementById("updatedAt");
   const refreshBtn = document.getElementById("refreshBtn");
-  function fmt(n){ return Math.round(n).toLocaleString("ru-RU").replace(/,/g, " "); }
+
+  function fmt(n){
+    return Math.round(n).toLocaleString("ru-RU").replace(/,/g, " ");
+  }
+
   function renderSkeleton(){
-    contentEl.innerHTML = PROBES.map(() => `<div class="row skeleton" style="height:60px;"></div>`).join("");
+    contentEl.innerHTML = PROBES.map(() =>
+      `<div class="row skeleton" style="height:60px;"></div>`
+    ).join("");
     heroPriceEl.textContent = "—";
     heroSubEl.textContent = "Yuklanmoqda…";
   }
+
   function renderError(message){
-    contentEl.innerHTML = `<div class="state err">${message}<div><span class="retry" id="retryLink">Qayta urinish</span></div></div>`;
+    contentEl.innerHTML = `
+      <div class="state err">
+        ${message}
+        <div><span class="retry" id="retryLink">Qayta urinish</span></div>
+      </div>`;
     document.getElementById("retryLink").onclick = load;
   }
-  function renderData(gramPureUZS, xauUsd, usdUzs){
+
+  function renderData(gramPureUZS, refProba, refPriceUsd, usdUzs){
     heroPriceEl.innerHTML = fmt(gramPureUZS) + ' <sup>so\'m</sup>';
-    heroSubEl.innerHTML = `1 untsiya (XAU) — <b>$${fmt(xauUsd)}</b> · 1 USD — <b>${fmt(usdUzs)} so'm</b>`;
+    heroSubEl.innerHTML = `Asos: ${refProba} proba — <b>$${refPriceUsd}</b>/gramm · 1 USD — <b>${fmt(usdUzs)} so'm</b>`;
+
     contentEl.innerHTML = PROBES.map(({p, note}) => {
       const price = gramPureUZS * (p / 1000);
       const featured = p === 585 || p === 750 ? "featured" : "";
-      return `<div class="row ${featured}"><div class="proba"><span class="proba-num">${p}</span><span class="proba-note">${note}</span></div><div class="price"><div class="price-val">${fmt(price)} so'm</div><div class="price-unit">1 gramm uchun</div></div></div>`;
+      return `
+        <div class="row ${featured}">
+          <div class="proba">
+            <span class="proba-num">${p}</span>
+            <span class="proba-note">${note}</span>
+          </div>
+          <div class="price">
+            <div class="price-val">${fmt(price)} so'm</div>
+            <div class="price-unit">1 gramm uchun</div>
+          </div>
+        </div>`;
     }).join("");
+
     const now = new Date();
     updatedAtEl.textContent = "Yangilandi: " + now.toLocaleTimeString("uz-UZ", {hour:"2-digit", minute:"2-digit"});
   }
+
   async function load(){
     renderSkeleton();
     try{
-      const [goldRes, fxRes] = await Promise.all([
-        fetch("https://api.frankfurter.dev/v2/rate/XAU/USD"),
+      const [dataRes, fxRes] = await Promise.all([
+        fetch(DATA_URL + "?v=" + Date.now()),
         fetch("https://open.er-api.com/v6/latest/USD"),
       ]);
-      if (!goldRes.ok || !fxRes.ok) throw new Error("network");
-      const goldData = await goldRes.json();
+      if (!dataRes.ok || !fxRes.ok) throw new Error("network");
+
+      const refData = await dataRes.json();
       const fxData = await fxRes.json();
-      const xauUsd = goldData.rate;
+
+      const refProba = Number(refData.proba);
+      const refPriceUsd = Number(refData.price_usd);
       const usdUzs = fxData.rates && fxData.rates.UZS;
-      if (!xauUsd || !usdUzs) throw new Error("missing");
-      const gramPureUSD = xauUsd / OZ_TO_GRAM;
+      if (!refProba || !refPriceUsd || !usdUzs) throw new Error("missing");
+
+      const gramPureUSD = refPriceUsd / (refProba / 1000);
       const gramPureUZS = gramPureUSD * usdUzs;
-      renderData(gramPureUZS, xauUsd, usdUzs);
+
+      renderData(gramPureUZS, refProba, refPriceUsd, usdUzs);
       if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("success");
     }catch(e){
       renderError("Narxlarni yuklab bo'lmadi. Internet aloqasini tekshiring.");
     }
   }
+
   refreshBtn.addEventListener("click", load);
   load();
 </script>
