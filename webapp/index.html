@@ -208,20 +208,32 @@
 
   async function load(){
     renderSkeleton();
+
+    let refData, fxData;
+
     try{
-      const [dataRes, fxRes] = await Promise.all([
-        fetch(DATA_URL + "?v=" + Date.now()),
-        fetch("https://open.er-api.com/v6/latest/USD"),
-      ]);
-      if (!dataRes.ok || !fxRes.ok) throw new Error("network");
+      const dataRes = await fetch(DATA_URL + "?v=" + Date.now());
+      if (!dataRes.ok) throw new Error("data-http-" + dataRes.status);
+      refData = await dataRes.json();
+    }catch(e){
+      renderError("Narx faylini (data.json) o'qib bo'lmadi. GitHub manzili yoki fayl formatini tekshiring.");
+      return;
+    }
 
-      const refData = await dataRes.json();
-      const fxData = await fxRes.json();
+    try{
+      const fxRes = await fetch("https://open.er-api.com/v6/latest/USD");
+      if (!fxRes.ok) throw new Error("fx-http-" + fxRes.status);
+      fxData = await fxRes.json();
+    }catch(e){
+      renderError("Valyuta kursini (USD/UZS) olib bo'lmadi. Internetni tekshiring.");
+      return;
+    }
 
+    try{
       const refProba = Number(refData.proba);
       const refPriceUsd = Number(refData.price_usd);
       const usdUzs = fxData.rates && fxData.rates.UZS;
-      if (!refProba || !refPriceUsd || !usdUzs) throw new Error("missing");
+      if (!refProba || !refPriceUsd || !usdUzs) throw new Error("missing-fields");
 
       const gramPureUSD = refPriceUsd / (refProba / 1000);
       const gramPureUZS = gramPureUSD * usdUzs;
@@ -229,7 +241,7 @@
       renderData(gramPureUZS, refProba, refPriceUsd, usdUzs);
       if (tg && tg.HapticFeedback) tg.HapticFeedback.notificationOccurred("success");
     }catch(e){
-      renderError("Narxlarni yuklab bo'lmadi. Internet aloqasini tekshiring.");
+      renderError("data.json faylida proba yoki price_usd maydoni noto'g'ri.");
     }
   }
 
